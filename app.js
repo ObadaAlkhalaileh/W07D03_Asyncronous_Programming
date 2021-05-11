@@ -19,7 +19,7 @@ const readFile = () => {
     });
     return content
 };
-readFile()
+//readFile()
 
 //Q3
 const writeFile = () => {
@@ -28,7 +28,7 @@ const writeFile = () => {
         console.log("The file has been created");
     });
 };
-writeFile()
+//writeFile()
 
 //Q4
 const getPost = (id) => {
@@ -43,9 +43,25 @@ const getPost = (id) => {
         throw err;
     });
 };
+//getPost(1);
+//getPost(50);
 
-getPost(1);
-getPost(50);
+//Q5
+const getPostAsync = async(id) => {
+
+    try {
+        const response = await axios.get(
+            `https://jsonplaceholder.typicode.com/posts/${id}`
+        );
+        console.log(response.data);
+    } catch (err) {
+        console.log("ERROR IS:", err);
+    }
+};
+getPostAsync(1)
+
+
+
 
 
 app.get("/", (req, res) => {
