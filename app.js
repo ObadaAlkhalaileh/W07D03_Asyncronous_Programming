@@ -58,17 +58,27 @@ const getPostAsync = async(id) => {
         console.log("ERROR IS:", err);
     }
 };
-getPostAsync(1)
+//getPostAsync(1)
 
+//PRAACTICE 
+//1
 
+const appendToFile = (data) => {
 
-
+    fs.appendFile('./data.txt', data, (err) => {
+        if (err) throw err;
+        console.log('The "data to append" was appended to file!');
+    });
+};
+appendToFile("heeelllloooooo")
 
 app.get("/", (req, res) => {
     res.status(200)
 
     res.json(`Hello Dude`)
 })
+
+//2
 
 
 app.listen(PORT, () => {
