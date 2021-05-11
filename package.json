@@ -2,14 +2,15 @@
     "name": "W07D03_Asyncronous_Programming",
     "version": "1.0.0",
     "description": "",
-    "main": "main.js",
+    "main": "app.js",
     "dependencies": {
+        "axios": "^0.21.1",
         "express": "^4.17.1"
     },
     "devDependencies": {},
     "scripts": {
-        "dev": "nodemon main.js",
-        "start": "node main.js",
+        "dev": "nodemon app.js",
+        "start": "node app.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "repository": {
