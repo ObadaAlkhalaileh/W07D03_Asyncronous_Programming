@@ -106,12 +106,13 @@ const createPost = (post) => {
     //since its a post method so i can directly console log the data because its already on my pc (no need to 
     //wait for response from server)
     return console.log(JSON.parse(post))
-
-    //using aliases method (didnt work well because the response was a little bit strange)its different from variable (post)
-    axios.post('https://jsonplaceholder.typicode.com/posts', post)
-        .then((response) => {
-            console.log(response.data)
-        })
+        /*-------------------------------------
+            //using aliases method (didnt work well because the response was a little bit strange)its different from variable (post)
+            axios.post('https://jsonplaceholder.typicode.com/posts', post)
+                .then((response) => {
+                    console.log(response.data)
+                })
+                */
 };
 //idk if there is an error in post because there is nothing to invoke in case of error 
 //createPost(post);
@@ -127,10 +128,15 @@ const newPost = JSON.stringify({
 });
 
 const updatePost = (postId, data) => {
-
+    //aliases method
+    axios.put(`https://jsonplaceholder.typicode.com/posts/${postId}`, data)
+        .then((response) => {
+            console.log("RESPONSE:::", response.data)
+                //the data of response isnt as JSON string,,although we sent it in JSON string
+        })
 };
 
-//updatePost(1, newPost);
+updatePost(1, newPost);
 
 
 app.get("/", (req, res) => {
