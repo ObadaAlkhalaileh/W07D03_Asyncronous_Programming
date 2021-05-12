@@ -8,6 +8,7 @@ app.use(express.json());
 //Q1
 const fs = require("fs");
 const axios = require("axios");
+const { response } = require("express");
 
 //Q2
 const readFile = () => {
@@ -94,17 +95,20 @@ const createPost = (post) => {
 
     //well... seems like we dont need to use async methods because it's a post method.
     axios({
-        //we can write it both ways (axios() or axions.get()) but BE CAREFUL the function will be different
-        //look up (((aliases methods)))
-        //NOTE:::::When using the alias methods e.g(axios.post)---- url, method, and data properties don't need to be specified in config.
-        //axios.get(url[, config])
-        //axios.post(url[, data[, config]])
-        method: 'post',
-        url: 'https://jsonplaceholder.typicode.com/posts',
-        data: post
-    });
-    //since its a post method so i can directly console log the data because its already on my pc (no need to 
-    //wait for response from server)
+            //we can write it both ways (axios() or axions.get()) but BE CAREFUL the function will be different
+            //look up (((aliases methods)))
+            //NOTE:::::When using the alias methods e.g(axios.post)---- url, method, and data properties don't need to be specified in config.
+            //axios.get(url[, config])
+            //axios.post(url[, data[, config]])
+            method: 'post',
+            url: 'https://jsonplaceholder.typicode.com/posts',
+            data: post
+        })
+        /*.then((response) => {
+            console.log("RESPONSE", response.data)
+        })*/
+        //since its a post method so i can directly console log the data because its already on my pc (no need to 
+        //wait for response from server)
     return console.log(JSON.parse(post))
         /*-------------------------------------
             //using aliases method (didnt work well because the response was a little bit strange)its different from variable (post)
@@ -132,11 +136,21 @@ const updatePost = (postId, data) => {
     axios.put(`https://jsonplaceholder.typicode.com/posts/${postId}`, data)
         .then((response) => {
             console.log("RESPONSE:::", response.data)
-                //the data of response isnt as JSON string,,although we sent it in JSON string
+
+            //the data of response isnt as JSON string,,although we sent it in JSON string
         })
 };
 
-updatePost(1, newPost);
+//updatePost(1, newPost);
+
+//5
+const getUsers = async() => {
+        // TODO: Your code here
+        let response
+        response = await axios.get('https://jsonplaceholder.typicode.com/posts/1/');
+        console.log("RESPONSE=", response)
+    }
+    // getUsers()
 
 
 app.get("/", (req, res) => {
