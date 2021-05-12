@@ -70,7 +70,19 @@ const appendToFile = (data) => {
         console.log('The "data to append" was appended to file!');
     });
 };
-appendToFile("heeelllloooooo")
+//appendToFile("heeelllloooooo")
+
+//2
+const copyFile = (fileName) => {
+    fs.copyFile(fileName, `copy_of_${fileName}`, (err) => {
+        if (err) return console.log('ERROR=====', err);
+        console.log('data.txt was copied to copy_of_data.txt');
+    });
+};
+//copyFile('data.txt')
+
+//3
+
 
 app.get("/", (req, res) => {
     res.status(200)
@@ -78,7 +90,7 @@ app.get("/", (req, res) => {
     res.json(`Hello Dude`)
 })
 
-//2
+
 
 
 app.listen(PORT, () => {
