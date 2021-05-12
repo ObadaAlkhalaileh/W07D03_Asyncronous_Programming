@@ -147,7 +147,7 @@ const updatePost = (postId, data) => {
 const getUsers = async() => {
         // TODO: Your code here
         let response
-        response = await axios.get('https://jsonplaceholder.typicode.com/posts/1/');
+        response = await axios.get('https://jsonplaceholder.typicode.com/posts');
         console.log("RESPONSE=", response)
     }
     // getUsers()
