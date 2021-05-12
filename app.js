@@ -91,9 +91,14 @@ const post = JSON.stringify({
 });
 
 const createPost = (post) => {
-    // will be promise based according to the documentation
+
     //well... seems like we dont need to use async methods because it's a post method.
     axios({
+        //we can write it both ways (axios() or axions.get()) but BE CAREFUL the function will be different
+        //look up (((aliases methods)))
+        //NOTE:::::When using the alias methods e.g(axios.post)---- url, method, and data properties don't need to be specified in config.
+        //axios.get(url[, config])
+        //axios.post(url[, data[, config]])
         method: 'post',
         url: 'https://jsonplaceholder.typicode.com/posts',
         data: post
@@ -101,10 +106,31 @@ const createPost = (post) => {
     //since its a post method so i can directly console log the data because its already on my pc (no need to 
     //wait for response from server)
     return console.log(JSON.parse(post))
-};
 
+    //using aliases method (didnt work well because the response was a little bit strange)its different from variable (post)
+    axios.post('https://jsonplaceholder.typicode.com/posts', post)
+        .then((response) => {
+            console.log(response.data)
+        })
+};
+//idk if there is an error in post because there is nothing to invoke in case of error 
 //createPost(post);
 
+//4
+
+const newPost = JSON.stringify({
+    // the post id that we want to update, change it when trying to update another post
+    id: 1,
+    title: "Updated Title",
+    body: "Updated body",
+    userId: 1,
+});
+
+const updatePost = (postId, data) => {
+
+};
+
+//updatePost(1, newPost);
 
 
 app.get("/", (req, res) => {
