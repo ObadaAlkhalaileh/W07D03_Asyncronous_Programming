@@ -82,6 +82,29 @@ const copyFile = (fileName) => {
 //copyFile('data.txt')
 
 //3
+// the API Expects JSON data to be sent and that's why `JSON.stringify` is used
+const post = JSON.stringify({
+    title: "JavaScript Basics",
+    body: "This post contains information about javaScript ",
+    // the id of the user who is going to create the post
+    userId: 1,
+});
+
+const createPost = (post) => {
+    // will be promise based according to the documentation
+    //well... seems like we dont need to use async methods because it's a post method.
+    axios({
+        method: 'post',
+        url: 'https://jsonplaceholder.typicode.com/posts',
+        data: post
+    });
+    //since its a post method so i can directly console log the data because its already on my pc (no need to 
+    //wait for response from server)
+    return console.log(JSON.parse(post))
+};
+
+//createPost(post);
+
 
 
 app.get("/", (req, res) => {
